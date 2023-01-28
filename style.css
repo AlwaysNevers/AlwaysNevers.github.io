@@ -45,21 +45,19 @@ img {
   text-align: center;
 }
 
-.container {
+.games {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .game {
-  flex: 1 0 30%; /* adjust as needed */
-  margin: 10px; /* adjust as needed */
-  text-align: center;
+  width: 300px;
+  margin: 10px;
 }
 
-.row {
-  display: flex;
-}
-.col {
-  flex: 1;
+.games {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
