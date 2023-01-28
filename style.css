@@ -1,10 +1,6 @@
 ﻿body {
   background-color: #1f1f1f;
   color: white;
-}
-
-/* font */
-body {
   font-family: Arial, sans-serif;
   font-size: 36px;
 }
@@ -13,13 +9,13 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 /* links */
 a {
   color: #007bff;
   text-decoration: none;
-  display: blocks;
 }
 
 /* buttons */
@@ -30,7 +26,6 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-
 }
 
 /* image class */
@@ -45,19 +40,14 @@ img {
   text-align: center;
 }
 
-.games {
+.games-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .game {
-  width: 300px;
+  flex: 1;
+  text-align: center;
   margin: 10px;
-}
-
-.games {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
 }
