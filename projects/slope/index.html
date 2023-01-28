@@ -6,60 +6,26 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
-    gtag('config', 'G-PS49ZXBGRW');
-        </script>
-<base target="_blank">
-<script>
-    var urlObj = new window.URL(window.location.href);
-    var url = "https://alwaysnevers.github.io/projects/slope/slope/index.html";
-</script>
-</head>
-<body>
-    <img src="projects/slope/slopeimage.jpeg" onclick="window.open(url, '_blank');" style="cursor: pointer;">
+        gtag('config', 'G-PS49ZXBGRW');
+    </script>
+    <base target="_blank"></head><body>
+    <img src="projects/slope/slopeimage.jpeg" id="slope-img" style="cursor: pointer;">
     <br>
-    <p>Click <a href="projects/slope/slope/index.html">HERE</a> for direct link</p>
+    <p>Click <a href="https://alwaysnevers.github.io/projects/slope/slope/index.html" target="_blank">HERE</a> for direct link</p>
     <script>
+        var slopeImg = document.getElementById("slope-img");
+        var url = "https://alwaysnevers.github.io/projects/slope/slope/index.html";
         var win;
-        document.querySelector('img').onclick = function() {
+        slopeImg.onclick = function() {
             if (win) {
                 win.focus();
-            } else {
-                win = window.open(url, '_blank');
-                win.document.body.style.margin = '0';
-                win.document.body.style.height = '100vh';
-                var iframe = win.document.createElement('iframe');
-                iframe.style.border = 'none';
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.style.margin = '0';
-                iframe.src = url;
-                win.document.body.appendChild(iframe);
+            } 
+            else {
+                win = window.open(url, "_blank");
             }
+            document.querySelector('button').style.background='#000000';
+            document.querySelector('button').innerHTML="Page Opened!";
         };
     </script>
     <script src="../js/abort.js"></script>
-    <script src="../../js/test.js"></script>
-    <script src="../../js/settings.js"></script>
-</body>
-</html>
-    *
-    {
-        font-family: arial;
-        text-align: center;
-    }
-    button {
-    color: white;
-        width: 220px; 
-        height: 40px;
-        border-radius: 12px;
-        background-color: #1F51FF;
-        font-family: Arial, Helvetica, sans-serif;
-        border: 1px solid white;
-        transition: background-color 500ms;
-    }
-    button:hover {
-        background-color: #000000;
-    }
-    </style></body></html> 
-    
+    <script src="
