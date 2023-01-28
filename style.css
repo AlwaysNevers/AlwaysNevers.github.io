@@ -1,6 +1,11 @@
 ﻿body {
   background-color: #1f1f1f;
   color: white;
+  text-align: center; /* added to center text */
+}
+
+/* font */
+body {
   font-family: Arial, sans-serif;
   font-size: 36px;
 }
@@ -9,13 +14,13 @@
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   letter-spacing: 1px;
-  text-align: center;
 }
 
 /* links */
 a {
   color: #007bff;
   text-decoration: none;
+  display: inline-block; /* changed to inline-block */
 }
 
 /* buttons */
@@ -32,43 +37,16 @@ button {
 img {
   max-width: 100%;
   height: auto;
+  display: inline-block; /* added to align images in a row */
 }
 
+/* container class */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
 }
 
-.games-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.game {
-  flex: 1;
-  text-align: center;
-  margin: 10px;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.col {
-  flex: 1;
-  text-align: center;
-  margin: 35px;
-}
-
-nav {
-  text-align: center;
+/*navbar class */
+.navbar{
+  text-align: center; /* added to center text */
 }
