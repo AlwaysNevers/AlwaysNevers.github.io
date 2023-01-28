@@ -56,3 +56,10 @@ img {
   margin: 10px; /* adjust as needed */
   text-align: center;
 }
+
+.row {
+  display: flex;
+}
+.col {
+  flex: 1;
+}
