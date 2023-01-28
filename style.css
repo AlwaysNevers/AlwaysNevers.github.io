@@ -1,7 +1,6 @@
 ﻿body {
   background-color: #1f1f1f;
   color: white;
-  text-align: center; /* added to center text */
 }
 
 /* font */
@@ -20,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: #007bff;
   text-decoration: none;
-  display: inline-block; /* changed to inline-block */
+  display: block;
 }
 
 /* buttons */
@@ -37,16 +36,16 @@ button {
 img {
   max-width: 100%;
   height: auto;
-  display: inline-block; /* added to align images in a row */
 }
 
-/* container class */
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
 }
 
-/*navbar class */
-.navbar{
-  text-align: center; /* added to center text */
+/* fix for nav text alignment */
+nav {
+  width: 100%;
+  text-align: center;
 }
