@@ -1,47 +1,48 @@
-<html><head>
+<html>
+<head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PS49ZXBGRW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PS49ZXBGRW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-PS49ZXBGRW');
+    gtag('config', 'G-PS49ZXBGRW');
+        </script>
+<base target="_blank">
+<script>
+    var urlObj = new window.URL(window.location.href);
+    var url = "https://alwaysnevers.github.io/projects/slope/slope/index.html";
+</script>
+</head>
+<body>
     <img src="projects/slope/slopeimage.jpeg" onclick="window.open(url, '_blank');" style="cursor: pointer;">
     <br>
     <p>Click <a href="projects/slope/slope/index.html">HERE</a> for direct link</p>
     <script>
-        var urlObj = new window.URL(window.location.href);
-        var url = "https://alwaysnevers.github.io/projects/slope/slope/index.html";
-    
-        if (url) {
-            var win;
-    
-            document.querySelector('button').onclick = function() {
-                if (win) {
-                    win.focus();
-                } 
-                else {
-                    win = window.open();
-                    win.document.body.style.margin = '0';
-                    win.document.body.style.height = '100vh';
-                    var iframe = win.document.createElement('iframe');
-                    iframe.style.border = 'none';
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.margin = '0';
-                    iframe.src = url;
-                    win.document.body.appendChild(iframe);
-                }
-                document.querySelector('button').style.background='#000000';
-                document.querySelector('button').innerHTML="Page Opened!";
-            };
-        }
+        var win;
+        document.querySelector('img').onclick = function() {
+            if (win) {
+                win.focus();
+            } else {
+                win = window.open(url, '_blank');
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = url;
+                win.document.body.appendChild(iframe);
+            }
+        };
     </script>
     <script src="../js/abort.js"></script>
     <script src="../../js/test.js"></script>
     <script src="../../js/settings.js"></script>
-    <style>
+</body>
+</html>
     *
     {
         font-family: arial;
