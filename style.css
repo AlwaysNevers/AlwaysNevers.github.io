@@ -51,3 +51,20 @@ img {
   text-align: center;
   margin: 10px;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
+  text-align: center;
+  margin: 10px;
+}
