@@ -1,10 +1,10 @@
 ﻿body {
   background-color: #1f1f1f;
+  color: white;
 }
 
 /* font */
 body {
-  color: white;
   font-family: Arial, sans-serif;
   font-size: 36px;
 }
