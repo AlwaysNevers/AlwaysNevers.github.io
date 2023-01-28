@@ -44,3 +44,15 @@ img {
   margin: 0 auto;
   text-align: center;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game {
+  flex: 1 0 30%; /* adjust as needed */
+  margin: 10px; /* adjust as needed */
+  text-align: center;
+}
