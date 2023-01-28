@@ -1,18 +1,18 @@
 ﻿body {
-  background-color: #363636;
+  background-color: #1f1f1f;
 }
 
 /* font */
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
+  font-color: #ffffff
 }
 
 /* headings */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 /* links */
