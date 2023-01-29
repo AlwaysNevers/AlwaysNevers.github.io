@@ -50,3 +50,15 @@ nav {
   width: 100%;
   text-align: center;
 }
+
+.small-text {
+  font-size: 28px;
+}
+
+.green-text {
+  color: #329485;
+}
+
+.light-blue-text {
+  color: #327894;
+}
