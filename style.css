@@ -54,6 +54,7 @@ img {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 16px;
     text-align: center;
+    justify-content: center;
 }
 
 .row {
