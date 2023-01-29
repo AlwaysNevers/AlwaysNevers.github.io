@@ -1,5 +1,6 @@
 ﻿body {
-  background-color: #1f1f1f;
+  background-image: url('/background.gif');
+  background-repeat: repeat;
   color: white;
 }
 
