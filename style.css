@@ -45,6 +45,17 @@ img {
   text-align: center;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col {
+    flex: 1;
+    margin: 10px;
+}
+
 /* fix for nav text alignment */
 nav {
   width: 100%;
