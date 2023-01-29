@@ -1,6 +1,7 @@
 ﻿body {
   background-image: url('/background.gif');
   background-repeat: repeat;
+  background-attachment: fixed;
   color: white;
   margin: 0; 
   padding: 0;
