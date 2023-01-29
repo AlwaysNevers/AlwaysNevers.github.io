@@ -68,6 +68,10 @@ img {
     margin: 35px;
 }
 
+.rounded-corners {
+    border-radius: 10px;
+}
+
 /* fix for nav text alignment */
 nav {
   width: 100%;
