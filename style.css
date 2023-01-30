@@ -1,7 +1,5 @@
 ﻿body {
-  background-image: url('/background.mp4');
-  background-repeat: repeat;
-  background-attachment: fixed;
+  background-color: #100021;
   color: white;
   margin: 0; 
   padding: 0;
