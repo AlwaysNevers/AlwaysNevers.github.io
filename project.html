@@ -3,31 +3,15 @@
   <head>
     <title>Projects</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-      function search() {
-        let input = document.getElementById("search-input").value.toLowerCase();
-        let games = document.getElementsByClassName("col");
-        for (let i = 0; i < games.length; i++) {
-          let game = games[i];
-          let name = game.getElementsByTagName("h2")[0].textContent.toLowerCase();
-          if (name.indexOf(input) > -1) {
-            game.style.display = "block";
-          } else {
-            game.style.display = "none";
-          }
-        }
-      }
-    </script>
   </head>
   <body>
     <h1>Games</h1>
     <nav>
         <div>
             <a href="index.html">Home</a>
-            <br>
-            <input type="text" id="search-input" placeholder="Search for a game" onkeyup="search()">
         </div>
     </nav>
+    <br>
     <br>
     <div class="gcontainer">
     <div class="row">
@@ -78,4 +62,3 @@
     <br>
   </body>
 </html>
-
