@@ -70,7 +70,6 @@ img {
 }
 
 .col {
-    display: flex;
     flex: 0 0 auto;
     width: 30%;
     margin: 0 auto;
