@@ -5,17 +5,11 @@
     <link rel="stylesheet" href="style.css">
     <script>
       function search() {
-        // Get the input value
         let input = document.getElementById("search-input").value.toLowerCase();
-
-        // Get all the game elements
         let games = document.getElementsByClassName("col");
-
-        // Loop through all the game elements and hide the ones that don't match the input value
         for (let i = 0; i < games.length; i++) {
           let game = games[i];
           let name = game.getElementsByTagName("h2")[0].textContent.toLowerCase();
-
           if (name.indexOf(input) > -1) {
             game.style.display = "block";
           } else {
@@ -34,7 +28,6 @@
             <input type="text" id="search-input" placeholder="Search for a game" onkeyup="search()">
         </div>
     </nav>
-    <br>
     <br>
     <div class="gcontainer">
     <div class="row">
