@@ -43,6 +43,13 @@ img {
   height: auto;
 }
 
+.game-img {
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -50,11 +57,12 @@ img {
 }
 
 .gcontainer {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 16px;
     text-align: center;
     justify-content: center;
+    align-items: center;
 }
 
 .row {
