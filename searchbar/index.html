@@ -17,12 +17,25 @@
       <script src="https://kit.fontawesome.com/407915e39a.js" crossorigin="anonymous"></script>
 
       <script>
-        function search(event) {
-          event.preventDefault();
-          const inputValue = document.getElementById("searchInput").value;
-          console.log("Searching for:", inputValue);
-        }
-      </script>
+  function toggleSearch() {
+    let searchContainer = document.getElementById("search-container");
+    searchContainer.classList.toggle("active");
+  }
+
+  function search() {
+    let input = document.getElementById("search-input").value.toLowerCase();
+    let games = document.getElementsByClassName("col");
+    for (let i = 0; i < games.length; i++) {
+      let game = games[i];
+      let name = game.getElementsByTagName("h2")[0].textContent.toLowerCase();
+      if (name.indexOf(input) > -1) {
+        game.style.display = "block";
+      } else {
+        game.style.display = "none";
+      }
+    }
+  }
+</script>
 </body>
 </html>
 <script src="https://kit.fontawesome.com/407915e39a.js" crossorigin="anonymous"></script>
