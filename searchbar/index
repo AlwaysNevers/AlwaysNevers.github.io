@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <link rel="stylesheet" href="style(searchbar.).css"
+</head>
+<body>
+    <form onsubmit="search(event)">
+        <input type="text" id="searchInput" placeholder="Type what game/movie you want">
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      <script src="https://kit.fontawesome.com/407915e39a.js" crossorigin="anonymous"></script>
+
+      <script>
+        function search(event) {
+          event.preventDefault();
+          const inputValue = document.getElementById("searchInput").value;
+          console.log("Searching for:", inputValue);
+        }
+      </script>
+</body>
+</html>
+<script src="https://kit.fontawesome.com/407915e39a.js" crossorigin="anonymous"></script>
