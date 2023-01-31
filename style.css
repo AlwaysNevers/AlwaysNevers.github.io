@@ -88,6 +88,10 @@ nav {
   font-size: 28px;
 }
 
+.smaller-text {
+  font-size: 20px;
+}
+
 .green-text {
   color: #329485;
 }
