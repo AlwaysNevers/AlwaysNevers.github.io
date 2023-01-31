@@ -1,62 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      #search-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
-        width: 100%;
-        background-color: #f2f2f2;
-      }
-
-      #search-input {
-        height: 30px;
-        width: 50%;
-        padding: 0 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        outline: none;
-      }
-
-      #search-icon {
-        height: 30px;
-        width: 30px;
-        background-color: #ccc;
-        border-radius: 5px 0 0 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-    </style>
-    <script>
-      function search() {
-        let input = document.getElementById("search-input").value.toLowerCase();
-        let games = document.getElementsByClassName("col");
-        for (let i = 0; i < games.length; i++) {
-          let game = games[i];
-          let name = game.getElementsByTagName("h2")[0].textContent.toLowerCase();
-          if (name.indexOf(input) > -1) {
-            game.style.display = "block";
-          } else {
-            game.style.display = "none";
-          }
-        }
-      }
-    </script>
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>Games</h1>
     <nav>
-      <div id="search-container">
+    <div>
+        <a href="index.html">Home</a>
+        <br>
         <input type="text" id="search-input" placeholder="Search for a game" onkeyup="search()">
-        <div id="search-icon" onclick="search()">
-          <i class="fa fa-search"></i>
-        </div>
-      </div>
+        <script src="searchbox/index.html"></script>
+        <br>
+    </div>
     </nav>
     <br>
     <br>
