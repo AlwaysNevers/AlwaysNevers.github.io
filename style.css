@@ -1,7 +1,7 @@
 ﻿ 
 body {
   background-color: #100021;
-  color: white;
+  color: rgb(222, 219, 255);
   margin: 0; 
   padding: 0;
 }
@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* links */
 a {
-  color: #007bff;
+  color: #521ce7;
   text-decoration: none;
   display: block;
 }
@@ -91,10 +91,11 @@ nav {
   color: #417cc4;
 }
 
-}
 .centered {  
   text-align: center;
 }
+
+
   
   
   /*body {
