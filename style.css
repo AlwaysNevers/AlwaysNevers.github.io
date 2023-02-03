@@ -1,7 +1,7 @@
-﻿ 
+ 
 body {
   background-color: #100021;
-  color: rgb(222, 219, 255);
+  color: rgb(227, 224, 255);
   margin: 0; 
   padding: 0;
 }
@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
   text-align: center;
 }
+
 /* links */
 a {
   color: #521ce7;
