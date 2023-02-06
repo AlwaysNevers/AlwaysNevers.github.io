@@ -95,7 +95,7 @@ nav {
   text-align: center;
 }
 
-/* GRADIEIENT BACKGROUND  */
+/* GRADIEIENT BACKGROUND 
 
 .box:before {
     content: "";
@@ -113,11 +113,6 @@ nav {
     border-radius: inherit;
 }
 
-/* 
-* Prevents issues when the parent creates a 
-* stacking context. (For example, using the transform
-* property )
-*/
 .box::after {
     content: "";
     z-index: -1;
@@ -129,8 +124,8 @@ nav {
     background: inherit;
     border-radius: inherit;
 }
-        
-  
+ */        
+ 
   
   /*body {
       padding: 0;
