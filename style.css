@@ -1,13 +1,12 @@
-﻿ 
-body {
+﻿body {
   background-color: #100021;
-  color: rgb(222, 219, 255);
+  color: rgb(227, 224, 255);
   margin: 0; 
   padding: 0;
 }
 /* font */
 body {
-  font-family: Arial, sans-serif;
+  font-family: Nunito, system-ui;
   font-size: 36px;
 }
 /* headings */
@@ -16,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
   text-align: center;
 }
+
 /* links */
 a {
   color: #521ce7;
@@ -24,7 +24,6 @@ a {
 }
 /* buttons */
 button {
-  background-color: #007bff;
   color: #fff;
   padding: 10px 15px;
   border: none;
@@ -95,8 +94,35 @@ nav {
   text-align: center;
 }
 
-
-  
+/* GRADIEIENT BACKGROUND 
+.box:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(-45deg, #f8acff 0%, #696eff 100% );
+    transform: translate3d(0px, 20px, 0) scale(0.95);
+    filter: blur(20px);
+    opacity: var(0.7);
+    transition: opacity 0.3s;
+    border-radius: inherit;
+}
+.box::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
+}
+ */        
+ 
   
   /*body {
       padding: 0;
@@ -105,7 +131,6 @@ nav {
       width: 100%;
       background: #100021;
   }
-
   form{
       position: relative;
       top: 50%;
@@ -120,7 +145,6 @@ nav {
       border: 4px solid white;
       padding: 5px;
   }
-
   input{
       position: absolute;
       top: 0;
@@ -135,7 +159,6 @@ nav {
       border-radius: 20px;
       padding: 0 20px;
   }
-
   .fa{
       box-sizing: border-box;
       padding: 10px;
@@ -150,16 +173,13 @@ nav {
       font-size: 1.2em;
       transition: all 1s;
   }
-
   form:hover{
       width: 300px;
       cursor: pointer;
   }
-
   form:hover input{
       display: block;
   }
-
   form:hover .fa{
       background: #07051a;
       color: white;
@@ -170,7 +190,6 @@ nav {
     font-family: montserrat, sans-serif;
     box-sizing: border-box;
   }
-
   .button-container {
     display: flex;
     width: 100%;
@@ -178,13 +197,11 @@ nav {
     justify-content: center;
     align-items: center;
   }
-
   .button {
     appearance: none;
     background: none;
     border: none;
     outline: none;
-
     padding: 20px 40px;
     border-radius: 8px;
     color: #212121;
@@ -197,7 +214,6 @@ nav {
 .button {
     position: relative;
   }
-
   .button:after {
     content: '';
     position: absolute;
@@ -210,7 +226,6 @@ nav {
     transition: all 0.4s, opacity 0.1s 0.4s;
     opacity: 0;
   }
-
   .button:before {
     content: '';
     position: absolute;
@@ -223,7 +238,6 @@ nav {
     transition: all 0.4s, opacity 0.1s 0.4s;
     opacity: 0;
   }
-
   .button:hover:after, .button:hover:before {
     width: calc(100% + 15px);
     height: calc(100% + 15px);
@@ -236,7 +250,6 @@ nav {
     font-family: montserrat, sans-serif;
     box-sizing: border-box;
   }
-
   .button-container {
     display: flex;
     width: 100%;
@@ -244,13 +257,11 @@ nav {
     justify-content: center;
     align-items: center;
   }
-
   .button {
     appearance: none;
     background: none;
     border: none;
     outline: none;
-
     padding: 20px 40px;
     border-radius: 8px;
     color: #212121;
@@ -260,13 +271,10 @@ nav {
     cursor: pointer;
     transition: 0.4s;
   }
-
  
-
   .button {
     position: relative;
   }
-
   .button:after {
     content: '';
     position: absolute;
@@ -279,7 +287,6 @@ nav {
     transition: all 0.4s, opacity 0.1s 0.4s;
     opacity: 0;
   }
-
   .button:before {
     content: '';
     position: absolute;
@@ -292,7 +299,6 @@ nav {
     transition: all 0.4s, opacity 0.1s 0.4s;
     opacity: 0;
   }
-
   .button:hover:after, .button:hover:before {
     width: calc(100% + 15px);
     height: calc(100% + 15px);
