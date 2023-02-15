@@ -30,6 +30,16 @@ button {
   border-radius: 3px;
   cursor: pointer;
 }
+
+.grow {
+  transition: transform 0.2s;
+  transform: scale(1);
+}
+
+.grow:hover {
+  transform: scale(1.2);
+}
+
 /* image class */
 img {
   max-width: 100%;
