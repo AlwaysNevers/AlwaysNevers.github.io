@@ -9,10 +9,12 @@
       var win = window.open("about:blank");
       win.addEventListener("load", function() {
         var iframe = win.document.createElement("iframe");
-        iframe.style.border = "none";
         iframe.style.width = "100%";
         iframe.style.height = "100%";
-        iframe.style.margin = "0";
+        iframe.style.position = "fixed";
+        iframe.style.top = "0";
+        iframe.style.left = "0";
+        iframe.style.border = "0";
         iframe.referrerpolicy = "no-referrer";
         iframe.allow = "fullscreen";
         iframe.src = defaultUrl;
