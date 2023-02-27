@@ -40,6 +40,15 @@ button {
   transform: scale(1.15);
 }
 
+.gamegrow {
+  transition: transform 0.2s;
+  transform: scale(1);
+}
+
+.gamegrow:hover {
+  transform: scale(1.08);
+}
+
 /* image class */
 img {
   max-width: 100%;
@@ -70,9 +79,10 @@ img {
 .col {
     flex: 0 0 auto;
     width: 30%;
-    margin: 0 auto;
+    margin: 40px auto;
     text-align: center;
 }
+
 .rounded {
     border-radius: 15px;
 }
