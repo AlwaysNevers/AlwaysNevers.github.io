@@ -5,19 +5,19 @@
   </head>
   <body>
     <script>
-      var defaultUrl = "alwaysnevers.github.io";
+      var defaultUrl = "https://example.com";
       var win = window.open("about:blank");
-      win.document.body.style.margin = "0";
-      win.document.body.style.height = "100vh";
-      var iframe = win.document.createElement("iframe");
-      iframe.style.border = "none";
-      iframe.style.width = "100%";
-      iframe.style.height = "100%";
-      iframe.style.margin = "0";
-      iframe.referrerpolicy = "no-referrer";
-      iframe.allow = "fullscreen";
-      iframe.src = defaultUrl;
-      win.document.body.appendChild(iframe);
+      win.addEventListener("load", function() {
+        var iframe = win.document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.margin = "0";
+        iframe.referrerpolicy = "no-referrer";
+        iframe.allow = "fullscreen";
+        iframe.src = defaultUrl;
+        win.document.body.appendChild(iframe);
+      });
     </script>
   </body>
 </html>
