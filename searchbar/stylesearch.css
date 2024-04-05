@@ -1,45 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto Mono', monospace;
-}
-
-body {
-    background: #100021;
+.search-container {
+    background: none;
+    height: 70px;
+    border-radius: 50px;
+    border: 4px solid rgb(52, 6, 128);
+    padding: 15px 30px;
+    max-width: 25%;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100vh 
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.5s;
 }
 
-form {
-    position: relative;
-    box-shadow: 0px 32px 40px -19px rgba(0,0,0,0.25);
+.search-container:hover > .search-input {
+    width: 100%;
 }
- 
-input {
-    outline: none;
+
+.search-container .search-input {
+    background: transparent;
     border: none;
-    border-radius: 30px;
-    padding: 1rem 2rem;
-    width: 0;
-    background: rgb(52, 6, 128);
-    color: rgb(99, 141, 255);
-    transition: width .5s;
-}
-
-i {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.25rem;
+    outline:none;
+    width: 0px;
+    font-size: 26px;
     color: #7f7bf2;
+    font-family: 'Roboto Mono', monospace;
+    transition: 0.5s;
 }
 
-form:hover input {
-    width: 500px;
+.search-container .search-btn .fas {
+    color: #7f7bf2;
+    font-size: 26px;
+}
+
+.search-container:hover {
+    border-radius: 10px;
+    background: #190233;
+    max-width: 50%;
 }

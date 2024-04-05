@@ -1,25 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Redirect</title>
-  </head>
-  <body>
-    <script>
-      var defaultUrl = "https://alwaysnevers.github.io";
-      var win = window.open("about:blank");
-      win.addEventListener("load", function() {
-        var iframe = win.document.createElement("iframe");
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.position = "fixed";
-        iframe.style.top = "0";
-        iframe.style.left = "0";
-        iframe.style.border = "0";
-        iframe.referrerpolicy = "no-referrer";
-        iframe.allow = "fullscreen";
-        iframe.src = defaultUrl;
-        win.document.body.appendChild(iframe);
-      });
-    </script>
-  </body>
+<head>
+  <title>Redirect</title>
+</head>
+<body>
+  <script>
+    var defaultUrl = "https://alwaysnevers.github.io";
+    var win = window.open("about:blank");
+    win.document.write("<iframe src='" + defaultUrl + "' style='width:100%; height:100%; border:0; position:fixed; top:0; left:0;' referrerpolicy='no-referrer' allow='fullscreen'></iframe>");
+    location.replace("https://google.com");
+  </script>
+</body>
 </html>

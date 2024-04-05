@@ -1,14 +1,16 @@
-﻿body {
+body {
   background-color: #100021;
   color: rgb(227, 224, 255);
   margin: 0; 
   padding: 0;
 }
+
 /* font */
 body {
   font-family: 'Manrope', sans-serif;
   font-size: 36px;
 }
+
 /* headings */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
@@ -22,6 +24,7 @@ a {
   text-decoration: none;
   display: block;
 }
+
 /* buttons */
 button {
   color: #fff;
@@ -54,43 +57,67 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 .game-img {
   width: 200px;
   height: 200px;
   display: block;
   margin: 0 auto;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
+
 .gcontainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
+
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 350rem;
 }
+
 .col {
-    flex: 0 0 auto;
-    width: 30%;
-    margin: 40px auto;
-    text-align: center;
+  flex: 1 1 auto;
+  width: 25%; 
+  min-width: 25%;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .col {
+    width: calc(100% / 2); /* Adjust width for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .col {
+    width: 100%; /* Full width for smaller devices */
+  }
 }
 
 .rounded {
-    border-radius: 15px;
+  border-radius: 15px;
 }
+
 /* fix for nav text alignment */
 nav {
   width: 100%;
   text-align: center;
 }
+
+nav button {
+  margin: 0 10px;
+}
+
 .small-text {
   font-size: 28px;
 }
@@ -103,9 +130,11 @@ nav {
 .green-text {
   color: #329485;
 }
+
 .light-blue-text {
   color: #327894;
 }
+
 .lighter-blue-text {  
   color: #417cc4;
 }
@@ -116,6 +145,43 @@ nav {
 
 .line {  
   text-align: center;
+}
+
+.category-container {
+  margin-bottom: 30px;
+}
+
+.category-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.movies-list {
+display: flex;
+overflow-x: auto; /* Enable horizontal scrolling */
+padding-bottom: 15px;
+width: 100%; /* Set a fixed width for the container */
+}
+
+.movie-item {
+cursor: pointer;
+min-width: 120px; /* Adjust as needed */
+max-width: 120px;
+border-radius: 10px;
+margin: 10px;
+overflow: hidden;
+display: inline-block;
+transition: transform 0.2s;
+}
+
+.movie-item:hover {
+transform: scale(1.1);
+}
+
+.movie-item img {
+max-width: 100%;
+height: auto;
+border-radius: 10px;
 }
 
 /* GRADIEIENT BACKGROUND 
