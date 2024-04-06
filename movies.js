@@ -82,7 +82,7 @@ function redirectToTMDb(movieId) {
     const loading = document.querySelector('.lds-ring'); // Get the loading animation element
     loading.style.display = 'block'; // Display the loading animation
 
-    const movieUrl = `https://vidsrc.to/embed/movie/${movieId}`;
+    const movieUrl = `https://myfilestorage.xyz/${movieId}.mp4`;
     const iframe = document.createElement("iframe");
     iframe.src = movieUrl;
     iframe.style.width = "100%";
