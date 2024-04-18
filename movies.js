@@ -82,7 +82,7 @@ function redirectToTMDb(movieId) {
     const loading = document.querySelector('.lds-ring'); // Get the loading animation element
     loading.style.display = 'block'; // Display the loading animation
 
-    const movieUrl = `https://myfilestorage.xyz/${movieId}.mp4`;
+    const movieUrl = `https://vidsrc.pro/embed/movie/${movieId}`;
     const iframe = document.createElement("iframe");
     iframe.src = movieUrl;
     iframe.style.width = "100%";
@@ -93,6 +93,7 @@ function redirectToTMDb(movieId) {
     iframe.style.left = "0";
     iframe.referrerPolicy = "no-referrer";
     iframe.allow = "fullscreen";
+    iframe.sandbox= "allow-same-origin allow-scripts";
     
     // Append iframe after a short delay to allow the loading animation to be displayed
     setTimeout(function() {
