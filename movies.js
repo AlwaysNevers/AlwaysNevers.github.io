@@ -78,6 +78,21 @@ movieContainer.appendChild(movieItem); // Append to the respective category cont
 });
 }
 
+function displayErrorPopup(message) {
+    const popup = document.createElement('div');
+    popup.classList.add('error-popup');
+    popup.textContent = message;
+
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+    closeButton.addEventListener('click', function() {
+        popup.remove();
+    });
+
+    popup.appendChild(closeButton);
+    document.body.appendChild(popup);
+}
+
 function redirectToTMDb(movieId) {
     const loading = document.querySelector('.lds-ring'); // Get the loading animation element
     loading.style.display = 'block'; // Display the loading animation
@@ -94,13 +109,13 @@ function redirectToTMDb(movieId) {
     iframe.referrerPolicy = "no-referrer";
     iframe.allow = "fullscreen";
     
-    // Append iframe after a short delay to allow the loading animation to be displayed
     setTimeout(function() {
-        // Append iframe after loading animation is displayed
         document.getElementById("movieContainer").innerHTML = ""; // Clear previous content
         document.getElementById("movieContainer").appendChild(iframe);
         loading.style.display = 'none'; // Hide loading animation when iframe content is loaded
     }, 100); // Adjust time delay as needed (100 milliseconds)
+
+    displayErrorPopup('Close any new tabs that open! Theyre just third party ads and I cant get rid of them :(');
 }
 
 function clearMovies() {
