@@ -79,6 +79,7 @@ movieContainer.appendChild(movieItem); // Append to the respective category cont
 }
 
 function displayErrorPopup(message) {
+    console.log('displayErrorPopup called');
     const popup = document.createElement('div');
     popup.classList.add('error-popup');
     popup.textContent = message;
@@ -91,6 +92,8 @@ function displayErrorPopup(message) {
 
     popup.appendChild(closeButton);
     document.body.appendChild(popup);
+
+    console.log('Error popup displayed');
 }
 
 function redirectToTMDb(movieId) {
