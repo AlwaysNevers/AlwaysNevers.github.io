@@ -100,7 +100,7 @@ function redirectToTMDb(movieId) {
     const loading = document.querySelector('.lds-ring'); // Get the loading animation element
     loading.style.display = 'block'; // Display the loading animation
 
-    const movieUrl = `https://multiembed.mov/directstream.php?video_id=${movieId}&tmdb=1`;
+    const movieUrl = `https://vidsrc.to/embed/movie/${movieId}`;
     const iframe = document.createElement("iframe");
     iframe.src = movieUrl;
     iframe.style.width = "100%";
