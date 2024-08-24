@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Redirect Test</title>
+</head>
+<body>
+    <h1>IP Redirect Test</h1>
+    <script>
+        // Function to get the user's IP address
+        fetch('https://api.ipify.org?format=json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const userIP = data.ip;
+                const blockedIP = '98.35.230.96'; // Replace with the IP you want to block
+
+                console.log('User IP:', userIP); // Log the IP to check if it's being fetched correctly
+
+                if (userIP === blockedIP) {
+                    // Redirect the user to Google if the IP matches
+                    window.location.href = 'https://www.google.com';
+                }
+            })
+            .catch(error => console.error('Error fetching IP:', error));
+    </script>
+</body>
+</html>
