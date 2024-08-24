@@ -104,9 +104,9 @@ function redirectToTMDb(mediaId, mediaType) {
 
   let mediaUrl;
   if (mediaType === 'movie') {
-    mediaUrl = `https://vidsrc.to/embed/movie/${mediaId}`;
+    mediaUrl = `https://vidsrc.cc/embed/movie/${mediaId}`;
   } else if (mediaType === 'tv') {
-    mediaUrl = `https://vidsrc.to/embed/tv/${mediaId}`; // Correct URL for TV shows
+    mediaUrl = `https://vidsrc.cc/embed/tv/${mediaId}`; // Correct URL for TV shows
   }
 
   const iframe = document.createElement("iframe");
