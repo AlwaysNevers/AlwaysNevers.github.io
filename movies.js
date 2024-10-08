@@ -48,8 +48,8 @@ async function searchMovies() {
     
     const movieData = await movieResponse.json();
 
+    // Check if the API returned any results
     const combinedResults = movieData.results || [];
-
     if (combinedResults.length > 0) {
       document.getElementById('noResults').innerText = '';
       displayMovies(combinedResults, 'movieContainer');
@@ -71,13 +71,23 @@ function displayMovies(media, containerId) {
   const mediaContainer = document.getElementById(containerId);
   mediaContainer.innerHTML = ''; // Clear previous results
 
+  if (media.length === 0) {
+    document.getElementById('noResults').innerText = 'No results found';
+    return;
+  }
+
   media.forEach(item => {
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('movie-item');
 
+    // Ensure the result has an image and title
     const img = document.createElement('img');
     img.src = item.image?.url || 'placeholder_image_url_here'; // Fallback if no image
     mediaItem.appendChild(img);
+
+    const title = document.createElement('p');
+    title.innerText = item.title || item.name || 'No Title';
+    mediaItem.appendChild(title);
 
     mediaItem.addEventListener('click', () => redirectToIMDb(item.id));
     mediaContainer.appendChild(mediaItem);
@@ -124,14 +134,14 @@ async function loadPopularMovies() {
     });
     const data = await response.json();
 
-    if (data.length > 0) {
+    if (data && data.length > 0) {
       displayMovies(data, 'popularMovies');
     } else {
-      alert('No popular movies found!');
+      console.log('No popular movies found');
+      // Do not alert on page load; just log it
     }
   } catch (error) {
     console.error('Error fetching popular movies:', error);
-    alert('An error occurred while fetching popular movies.');
   }
 }
 
@@ -146,14 +156,13 @@ async function loadRecentMovies() {
     });
     const data = await response.json();
 
-    if (data.length > 0) {
+    if (data && data.length > 0) {
       displayMovies(data, 'recentMovies');
     } else {
-      alert('No recent movies found!');
+      console.log('No recent movies found');
     }
   } catch (error) {
     console.error('Error fetching recent movies:', error);
-    alert('An error occurred while fetching recent movies.');
   }
 }
 
@@ -168,13 +177,12 @@ async function loadHighlyRatedMovies() {
     });
     const data = await response.json();
 
-    if (data.length > 0) {
+    if (data && data.length > 0) {
       displayMovies(data, 'highRatedMovies');
     } else {
-      alert('No highly rated movies found!');
+      console.log('No highly rated movies found');
     }
   } catch (error) {
     console.error('Error fetching highly rated movies:', error);
-    alert('An error occurred while fetching highly rated movies.');
   }
 }
