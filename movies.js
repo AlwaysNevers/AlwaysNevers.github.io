@@ -30,20 +30,20 @@ function hideCategories() {
 async function searchMovies() {
   try {
     const searchTerm = document.getElementById('searchbar').value.trim();
-    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
+    const apiKey = '444b07a8';
     if (searchTerm === '') {
       clearMovies();
       return; // Exit the function early if search term is empty
     }
 
-    // Search for both movies and TV shows
-    const movieResponse = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}`);
-    const tvResponse = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${searchTerm}`);
+    // Search for both movies and TV shows using OMDb
+    const movieResponse = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}&type=movie`);
+    const tvResponse = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}&type=series`);
     const movieData = await movieResponse.json();
     const tvData = await tvResponse.json();
 
     // Combine movie and TV show results
-    const combinedResults = [...movieData.results, ...tvData.results];
+    const combinedResults = [...(movieData.Search || []), ...(tvData.Search || [])];
 
     if (combinedResults.length > 0) {
       // Clear "No results found" message
@@ -58,7 +58,6 @@ async function searchMovies() {
     }
   } catch (error) {
     console.error('Error fetching movies and TV shows:', error);
-    // Prevent alert when clearing search bar
     const searchTerm = document.getElementById('searchbar').value.trim();
     if (searchTerm !== '') {
       alert('An error occurred while fetching movies and TV shows.');
@@ -78,36 +77,31 @@ function displayMovies(media, containerId) {
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('movie-item');
 
-    const posterPath = `https://image.tmdb.org/t/p/w200${item.poster_path}`;
+    // OMDb provides a direct poster URL in `Poster`
     const img = document.createElement('img');
-    img.src = posterPath;
+    img.src = item.Poster !== 'N/A' ? item.Poster : 'placeholder_image_url_here'; // Fallback if no poster available
     mediaItem.appendChild(img);
 
-    // Determine media type based on endpoint
+    // Determine media type based on OMDb response
     let mediaType;
-    if (item.hasOwnProperty('title')) {
+    if (item.Type === 'movie') {
       mediaType = 'movie';
-    } else if (item.hasOwnProperty('name')) {
+    } else if (item.Type === 'series') {
       mediaType = 'tv';
     } else {
-      mediaType = 'unknown'; // Handle unknown media types
+      mediaType = 'unknown';
     }
 
-    mediaItem.addEventListener('click', () => redirectToTMDb(item.id, mediaType));
+    mediaItem.addEventListener('click', () => redirectToOMDb(item.imdbID, mediaType));
     mediaContainer.appendChild(mediaItem); // Append to the respective category container
   });
 }
 
-function redirectToTMDb(mediaId, mediaType) {
+function redirectToOMDb(imdbID, mediaType) {
   const loading = document.querySelector('.lds-ring'); // Get the loading animation element
   loading.style.display = 'block'; // Display the loading animation
 
-  let mediaUrl;
-  if (mediaType === 'movie') {
-    mediaUrl = `https://vidsrc.cc/v2/embed/movie/${mediaId}`;
-  } else if (mediaType === 'tv') {
-    mediaUrl = `https://vidsrc.cc/v2/embed/tv/${mediaId}`; // Correct URL for TV shows
-  }
+  const mediaUrl = `https://www.imdb.com/title/${imdbID}/`;
 
   const iframe = document.createElement("iframe");
   iframe.src = mediaUrl;
@@ -129,60 +123,27 @@ function redirectToTMDb(mediaId, mediaType) {
   alert('Close any new tabs that open! They\'re just third-party ads and I can\'t get rid of them :(');
 }
 
-// Load popular, recent, and highly rated movies
+// OMDb doesn't have direct 'popular', 'recent', or 'highly rated' categories.
+// You might need to manually set up categories, using your own movie lists or a different strategy.
+
 document.addEventListener('DOMContentLoaded', async function() {
-  await loadPopularMovies();
-  await loadRecentMovies();
-  await loadHighlyRatedMovies();
+  await loadPopularMovies(); // This would need customization
+  await loadRecentMovies(); // This would need customization
+  await loadHighlyRatedMovies(); // This would need customization
 });
 
 async function loadPopularMovies() {
-  try {
-    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
-    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
-    const data = await response.json();
-
-    if (data.results.length > 0) {
-      displayMovies(data.results, 'popularMovies');
-    } else {
-      alert('No popular movies found!');
-    }
-  } catch (error) {
-    console.error('Error fetching popular movies:', error);
-    alert('An error occurred while fetching popular movies.');
-  }
+  // OMDb doesn't provide direct "popular" or "now playing" endpoints
+  // You would need a different approach for these categories, such as manually curating lists
+  alert("OMDb does not provide popular movie listings. You can add a manual list here.");
 }
 
 async function loadRecentMovies() {
-  try {
-    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
-    const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`);
-    const data = await response.json();
-
-    if (data.results.length > 0) {
-      displayMovies(data.results, 'recentMovies');
-    } else {
-      alert('No recent movies found!');
-    }
-  } catch (error) {
-    console.error('Error fetching recent movies:', error);
-    alert('An error occurred while fetching recent movies.');
-  }
+  // Similar to popular movies, OMDb doesn't have recent or now playing
+  alert("OMDb does not provide recent movie listings. You can manually add recent movies.");
 }
 
 async function loadHighlyRatedMovies() {
-  try {
-    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
-    const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`);
-    const data = await response.json();
-
-    if (data.results.length > 0) {
-      displayMovies(data.results, 'highRatedMovies');
-    } else {
-      alert('No highly rated movies found!');
-    }
-    } catch (error) {
-    console.error('Error fetching highly rated movies:', error);
-    alert('An error occurred while fetching highly rated movies.');
-    }
-    }
+  // OMDb does not have a top-rated endpoint either
+  alert("OMDb does not provide highly-rated movie listings. You can manually curate these.");
+}
