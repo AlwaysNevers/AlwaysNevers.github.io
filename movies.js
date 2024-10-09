@@ -1,4 +1,4 @@
-const rapidApiKey = 'deed5a3976msh2da5e501671388dp140179jsnbc8aa2f9dd6d';
+const rapidApiKey = 'deed5a3976msh2da5e501671388dp140179jsnbc8aa2f9dd6d'; // Replace with your actual key
 
 document.getElementById('searchForm').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the default form submission
@@ -48,8 +48,10 @@ async function searchMovies() {
     
     const movieData = await movieResponse.json();
 
-    // Check if the API returned any results
+    // Check if results are returned in the correct format
     const combinedResults = movieData.results || [];
+    console.log('Movie Data:', movieData); // Debug the data structure
+
     if (combinedResults.length > 0) {
       document.getElementById('noResults').innerText = '';
       displayMovies(combinedResults, 'movieContainer');
@@ -82,7 +84,13 @@ function displayMovies(media, containerId) {
 
     // Ensure the result has an image and title
     const img = document.createElement('img');
-    img.src = item.image?.url || 'placeholder_image_url_here'; // Fallback if no image
+    
+    if (item.image && item.image.url) {
+      img.src = item.image.url; // Use the image if available
+    } else {
+      img.src = 'https://via.placeholder.com/200x300?text=No+Image'; // Fallback image
+    }
+    
     mediaItem.appendChild(img);
 
     const title = document.createElement('p');
@@ -133,12 +141,12 @@ async function loadPopularMovies() {
       }
     });
     const data = await response.json();
+    console.log('Popular Movies:', data); // Debug the data structure
 
     if (data && data.length > 0) {
       displayMovies(data, 'popularMovies');
     } else {
       console.log('No popular movies found');
-      // Do not alert on page load; just log it
     }
   } catch (error) {
     console.error('Error fetching popular movies:', error);
@@ -155,6 +163,7 @@ async function loadRecentMovies() {
       }
     });
     const data = await response.json();
+    console.log('Recent Movies:', data); // Debug the data structure
 
     if (data && data.length > 0) {
       displayMovies(data, 'recentMovies');
@@ -176,6 +185,7 @@ async function loadHighlyRatedMovies() {
       }
     });
     const data = await response.json();
+    console.log('Highly Rated Movies:', data); // Debug the data structure
 
     if (data && data.length > 0) {
       displayMovies(data, 'highRatedMovies');
