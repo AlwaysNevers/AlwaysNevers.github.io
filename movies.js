@@ -148,4 +148,3 @@ async function loadHighlyRatedMovies() {
     console.error('Error fetching highly rated movies:', error);
     alert('An error occurred while fetching highly rated movies.');
     }
-    }
