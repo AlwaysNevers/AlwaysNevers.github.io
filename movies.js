@@ -1,5 +1,3 @@
-const rapidApiKey = 'deed5a3976msh2da5e501671388dp140179jsnbc8aa2f9dd6d'; // Replace with your actual key
-
 document.getElementById('searchForm').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the default form submission
   searchMovies();
@@ -28,100 +26,73 @@ function hideCategories() {
     container.style.display = 'none';
   });
 }
-
 async function searchMovies() {
   try {
     const searchTerm = document.getElementById('searchbar').value.trim();
+    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
     if (searchTerm === '') {
       clearMovies();
       return; // Exit the function early if search term is empty
     }
 
-    // IMDb API search endpoint
-    const movieResponse = await fetch(`https://imdb8.p.rapidapi.com/title/find?q=${searchTerm}`, {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': rapidApiKey,
-        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-      }
-    });
-    
+    // Search for both movies and TV shows
+    const movieResponse = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}`);
+    const tvResponse = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${searchTerm}`);
     const movieData = await movieResponse.json();
+    const tvData = await tvResponse.json();
 
-    // Check if results are returned in the correct format
-    const combinedResults = movieData.results || [];
-    console.log('Movie Data:', movieData); // Debug the data structure
+    // Combine movie and TV show results
+    const combinedResults = [...movieData.results, ...tvData.results];
 
     if (combinedResults.length > 0) {
-      document.getElementById('noResults').innerText = '';
-      displayMovies(combinedResults, 'movieContainer');
-    } else {
-      document.getElementById('noResults').innerText = 'No results found';
-      clearMovies();
+      // Clear "No results found" message
+@@ -58,7 +58,6 @@ async function searchMovies() {
     }
   } catch (error) {
-    console.error('Error fetching movies:', error);
-    alert('An error occurred while fetching movies.');
-  }
-}
-
-function clearMovies() {
-  document.getElementById('movieContainer').innerHTML = '';
-}
-
-function displayMovies(media, containerId) {
-  const mediaContainer = document.getElementById(containerId);
-  mediaContainer.innerHTML = ''; // Clear previous results
-
-  if (media.length === 0) {
-    document.getElementById('noResults').innerText = 'No results found';
-    return;
-  }
-
-  media.forEach(item => {
+    console.error('Error fetching movies and TV shows:', error);
+    // Prevent alert when clearing search bar
+    const searchTerm = document.getElementById('searchbar').value.trim();
+    if (searchTerm !== '') {
+      alert('An error occurred while fetching movies and TV shows.');
+@@ -78,36 +77,31 @@ function displayMovies(media, containerId) {
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('movie-item');
 
-    // Ensure the result has an image and title
+    const posterPath = `https://image.tmdb.org/t/p/w200${item.poster_path}`;
     const img = document.createElement('img');
-    
-    if (item.image && item.image.url) {
-      img.src = item.image.url; // Use the image if available
-    } else {
-      img.src = 'https://via.placeholder.com/200x300?text=No+Image'; // Fallback image
-    }
-    
+    img.src = posterPath;
     mediaItem.appendChild(img);
 
-    const title = document.createElement('p');
-    title.innerText = item.title || item.name || 'No Title';
-    mediaItem.appendChild(title);
+    // Determine media type based on endpoint
+    let mediaType;
+    if (item.hasOwnProperty('title')) {
+      mediaType = 'movie';
+    } else if (item.hasOwnProperty('name')) {
+      mediaType = 'tv';
+    } else {
+      mediaType = 'unknown'; // Handle unknown media types
+    }
 
-    mediaItem.addEventListener('click', () => redirectToIMDb(item.id));
-    mediaContainer.appendChild(mediaItem);
+    mediaItem.addEventListener('click', () => redirectToTMDb(item.id, mediaType));
+    mediaContainer.appendChild(mediaItem); // Append to the respective category container
   });
 }
 
-function redirectToIMDb(imdbID) {
-  const mediaUrl = `https://www.imdb.com/title/${imdbID}/`;
+function redirectToTMDb(mediaId, mediaType) {
+  const loading = document.querySelector('.lds-ring'); // Get the loading animation element
+  loading.style.display = 'block'; // Display the loading animation
+
+  let mediaUrl;
+  if (mediaType === 'movie') {
+    mediaUrl = `https://vidsrc.cc/v2/embed/movie/${mediaId}`;
+  } else if (mediaType === 'tv') {
+    mediaUrl = `https://vidsrc.cc/v2/embed/tv/${mediaId}`; // Correct URL for TV shows
+  }
 
   const iframe = document.createElement("iframe");
   iframe.src = mediaUrl;
-  iframe.style.width = "100%";
-  iframe.style.height = "100%";
-  iframe.style.border = "0";
-  iframe.style.position = "fixed";
-  iframe.style.top = "0";
-  iframe.style.left = "0";
-  iframe.referrerPolicy = "no-referrer";
-  iframe.allow = "fullscreen";
-
-  setTimeout(function() {
-    document.getElementById("movieContainer").innerHTML = ""; // Clear previous content
-    document.getElementById("movieContainer").appendChild(iframe);
-  }, 100); // Adjust time delay as needed (100 milliseconds)
-
-  alert('Close any new tabs that open! They\'re just third-party ads.');
+@@ -129,60 +123,27 @@ function redirectToTMDb(mediaId, mediaType) {
+  alert('Close any new tabs that open! They\'re just third-party ads and I can\'t get rid of them :(');
 }
 
 // Load popular, recent, and highly rated movies
@@ -133,66 +104,48 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 async function loadPopularMovies() {
   try {
-    const response = await fetch(`https://imdb8.p.rapidapi.com/title/get-most-popular-movies`, {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': rapidApiKey,
-        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-      }
-    });
+    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
+    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
     const data = await response.json();
-    console.log('Popular Movies:', data); // Debug the data structure
-
-    if (data && data.length > 0) {
-      displayMovies(data, 'popularMovies');
+    if (data.results.length > 0) {
+      displayMovies(data.results, 'popularMovies');
     } else {
-      console.log('No popular movies found');
+      alert('No popular movies found!');
     }
   } catch (error) {
     console.error('Error fetching popular movies:', error);
+    alert('An error occurred while fetching popular movies.');
   }
 }
 
 async function loadRecentMovies() {
   try {
-    const response = await fetch(`https://imdb8.p.rapidapi.com/title/get-coming-soon-movies`, {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': rapidApiKey,
-        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-      }
-    });
+    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
+    const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`);
     const data = await response.json();
-    console.log('Recent Movies:', data); // Debug the data structure
-
-    if (data && data.length > 0) {
-      displayMovies(data, 'recentMovies');
+    if (data.results.length > 0) {
+      displayMovies(data.results, 'recentMovies');
     } else {
-      console.log('No recent movies found');
+      alert('No recent movies found!');
     }
   } catch (error) {
     console.error('Error fetching recent movies:', error);
+    alert('An error occurred while fetching recent movies.');
   }
 }
 
 async function loadHighlyRatedMovies() {
   try {
-    const response = await fetch(`https://imdb8.p.rapidapi.com/title/get-top-rated-movies`, {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': rapidApiKey,
-        'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-      }
-    });
+    const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
+    const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`);
     const data = await response.json();
-    console.log('Highly Rated Movies:', data); // Debug the data structure
-
-    if (data && data.length > 0) {
-      displayMovies(data, 'highRatedMovies');
+    if (data.results.length > 0) {
+      displayMovies(data.results, 'highRatedMovies');
     } else {
-      console.log('No highly rated movies found');
+      alert('No highly rated movies found!');
     }
-  } catch (error) {
+    } catch (error) {
     console.error('Error fetching highly rated movies:', error);
-  }
-}
+    alert('An error occurred while fetching highly rated movies.');
+    }
+    }
