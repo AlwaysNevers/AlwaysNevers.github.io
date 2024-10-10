@@ -26,6 +26,7 @@ function hideCategories() {
     container.style.display = 'none';
   });
 }
+
 async function searchMovies() {
   try {
     const searchTerm = document.getElementById('searchbar').value.trim();
@@ -46,7 +47,14 @@ async function searchMovies() {
 
     if (combinedResults.length > 0) {
       // Clear "No results found" message
-@@ -58,7 +58,6 @@ async function searchMovies() {
+      document.getElementById('noResults').innerText = '';
+      // Display the movies and TV shows
+      displayMovies(combinedResults, 'movieContainer');
+    } else {
+      // Display "No results found!" text on the screen
+      document.getElementById('noResults').innerText = 'No results found';
+      // Clear any existing movies from the screen
+      clearMovies();
     }
   } catch (error) {
     console.error('Error fetching movies and TV shows:', error);
@@ -54,7 +62,19 @@ async function searchMovies() {
     const searchTerm = document.getElementById('searchbar').value.trim();
     if (searchTerm !== '') {
       alert('An error occurred while fetching movies and TV shows.');
-@@ -78,36 +77,31 @@ function displayMovies(media, containerId) {
+    }
+  }
+}
+
+function clearMovies() {
+  document.getElementById('movieContainer').innerHTML = '';
+}
+
+function displayMovies(media, containerId) {
+  const mediaContainer = document.getElementById(containerId);
+  mediaContainer.innerHTML = ''; // Clear previous results
+
+  media.forEach(item => {
     const mediaItem = document.createElement('div');
     mediaItem.classList.add('movie-item');
 
@@ -84,14 +104,28 @@ function redirectToTMDb(mediaId, mediaType) {
 
   let mediaUrl;
   if (mediaType === 'movie') {
-    mediaUrl = `https://vidsrc.cc/v2/embed/movie/${mediaId}`;
+    mediaUrl = `https://vidsrc.to/embed/movie/${mediaId}`;
   } else if (mediaType === 'tv') {
-    mediaUrl = `https://vidsrc.cc/v2/embed/tv/${mediaId}`; // Correct URL for TV shows
+    mediaUrl = `https://vidsrc.to/embed/tv/${mediaId}`; // Correct URL for TV shows
   }
 
   const iframe = document.createElement("iframe");
   iframe.src = mediaUrl;
-@@ -129,60 +123,27 @@ function redirectToTMDb(mediaId, mediaType) {
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "0";
+  iframe.style.position = "fixed";
+  iframe.style.top = "0";
+  iframe.style.left = "0";
+  iframe.referrerPolicy = "no-referrer";
+  iframe.allow = "fullscreen";
+
+  setTimeout(function() {
+    document.getElementById("movieContainer").innerHTML = ""; // Clear previous content
+    document.getElementById("movieContainer").appendChild(iframe);
+    loading.style.display = 'none'; // Hide loading animation when iframe content is loaded
+  }, 100); // Adjust time delay as needed (100 milliseconds)
+
   alert('Close any new tabs that open! They\'re just third-party ads and I can\'t get rid of them :(');
 }
 
@@ -107,6 +141,7 @@ async function loadPopularMovies() {
     const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
     const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
     const data = await response.json();
+
     if (data.results.length > 0) {
       displayMovies(data.results, 'popularMovies');
     } else {
@@ -123,6 +158,7 @@ async function loadRecentMovies() {
     const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
     const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`);
     const data = await response.json();
+
     if (data.results.length > 0) {
       displayMovies(data.results, 'recentMovies');
     } else {
@@ -139,6 +175,7 @@ async function loadHighlyRatedMovies() {
     const apiKey = 'c0aa80b5561bd96b6cd261ac6d57886c';
     const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`);
     const data = await response.json();
+
     if (data.results.length > 0) {
       displayMovies(data.results, 'highRatedMovies');
     } else {
@@ -147,4 +184,5 @@ async function loadHighlyRatedMovies() {
     } catch (error) {
     console.error('Error fetching highly rated movies:', error);
     alert('An error occurred while fetching highly rated movies.');
+    }
     }
