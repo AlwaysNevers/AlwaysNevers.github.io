@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live TV - Neverland</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="livetv.css">
+    <link rel="stylesheet" href="searchbar/stylesearch.css">
+    <script src="https://kit.fontawesome.com/407915e39a.js" crossorigin="anonymous"></script>
+    <script src="livetv.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Live TV</h1>
+        <button class="rounded grow" style="background-color: transparent; border: 3px solid rgb(70, 15, 143); font-size: 28px;">
+          <a href="https://alwaysnevers.github.io">Home</a>
+          </button>
+        <p style="font-size: 28px; text-align: center;">Live sports too?</p>
+
+        <div class="sports-category">
+          <div class="sport-button">Soccer</div>
+          <div class="sport-button">Football</div>
+          <div class="sport-button">Basketball</div>
+          <div class="sport-button">Hockey</div>
+          <div class="sport-button">Baseball</div>
+          <div class="sport-button">Motor Sports</div>
+          <div class="sport-button">Fight</div>
+          <div class="sport-button">Tennis</div>
+          <div class="sport-button">Rugby</div>
+          <div class="sport-button">Golf</div>
+          <div class="sport-button">Billiards</div>
+          <div class="sport-button">AFL</div>
+          <div class="sport-button">Darts</div>
+          <div class="sport-button">Cricket</div>
+          <div class="sport-button">Other Sports</div>          
+        </div>
+
+        <br>
+
+        <!-- Matches Categories -->
+        <div class="popular-header">
+          <h2 class="category-title">Popular Live</h2>
+          <div class="scroll-arrows">
+              <button class="scroll-arrow left-arrow" onclick="leftScroll('matches-container')">&#10094;</button>
+              <button class="scroll-arrow right-arrow" onclick="rightScroll('matches-container')">&#10095;</button>
+          </div>
+      </div>
+      <div class="category-container">
+          <div id="matches-container" class="match-container loading">Loading live matches...</div>
+      </div>
+      
+      <div class="popular-header">
+          <h2 class="category-title">Popular Soccer</h2>
+          <div class="scroll-arrows">
+              <button class="scroll-arrow left-arrow" onclick="leftScroll('soccer-container')">&#10094;</button>
+              <button class="scroll-arrow right-arrow" onclick="rightScroll('soccer-container')">&#10095;</button>
+          </div>
+      </div>
+      <div class="category-container">
+          <div id="soccer-container" class="match-container loading">Loading soccer matches...</div>
+      </div>
+      
+      <div class="popular-header">
+          <h2 class="category-title">Popular Football</h2>
+          <div class="scroll-arrows">
+              <button class="scroll-arrow left-arrow" onclick="leftScroll('football-container')">&#10094;</button>
+              <button class="scroll-arrow right-arrow" onclick="rightScroll('football-container')">&#10095;</button>
+          </div>
+      </div>
+      <div class="category-container">
+          <div id="football-container" class="match-container loading">Loading football...</div>
+      </div>
+      
+      <div class="popular-header">
+          <h2 class="category-title">Popular Hockey</h2>
+          <div class="scroll-arrows">
+              <button class="scroll-arrow left-arrow" onclick="leftScroll('hockey-container')">&#10094;</button>
+              <button class="scroll-arrow right-arrow" onclick="rightScroll('hockey-container')">&#10095;</button>
+          </div>
+      </div>
+      <div class="category-container">
+          <div id="hockey-container" class="match-container loading">Loading hockey...</div>
+      </div>
+      
+      <div class="popular-header">
+          <h2 class="category-title">Popular Baseball</h2>
+          <div class="scroll-arrows">
+              <button class="scroll-arrow left-arrow" onclick="leftScroll('baseball-container')">&#10094;</button>
+              <button class="scroll-arrow right-arrow" onclick="rightScroll('baseball-container')">&#10095;</button>
+          </div>
+      </div>
+      <div class="category-container">
+          <div id="baseball-container" class="match-container loading">Loading baseball...</div>
+      </div>
+      
+      <div class="popular-header">
+          <h2 class="category-title">Popular Motorsports</h2>
+          <div class="scroll-arrows">
+              <button class="scroll-arrow left-arrow" onclick="leftScroll('motorsports-container')">&#10094;</button>
+              <button class="scroll-arrow right-arrow" onclick="rightScroll('motorsports-container')">&#10095;</button>
+          </div>
+      </div>
+      <div class="category-container">
+          <div id="motorsports-container" class="match-container loading">Loading motorsports...</div>
+      </div>
+      
+      <div class="popular-header">
+        <h2 class="category-title">Popular Fight (UFC, Boxing)</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('fight-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('fight-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="fight-container" class="match-container loading">Loading fight matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Popular Tennis</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('tennis-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('tennis-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="tennis-container" class="match-container loading">Loading tennis matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Popular Rugby</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('rugby-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('rugby-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="rugby-container" class="match-container loading">Loading rugby matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Popular Golf</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('golf-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('golf-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="golf-container" class="match-container loading">Loading golf matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Popular Billiards</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('billiards-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('billiards-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="billiards-container" class="match-container loading">Loading billiards matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Popular AFL</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('afl-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('afl-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="afl-container" class="match-container loading">Loading AFL matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Popular Darts</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('darts-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('darts-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="darts-container" class="match-container loading">Loading darts matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Popular Cricket</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('cricket-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('cricket-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="cricket-container" class="match-container loading">Loading cricket matches...</div>
+    </div>
+    
+    <div class="popular-header">
+        <h2 class="category-title">Other Sports</h2>
+        <div class="scroll-arrows">
+            <button class="scroll-arrow left-arrow" onclick="leftScroll('other-container')">&#10094;</button>
+            <button class="scroll-arrow right-arrow" onclick="rightScroll('other-container')">&#10095;</button>
+        </div>
+    </div>
+    <div class="category-container">
+        <div id="other-container" class="match-container loading">Loading other sports matches...</div>
+    </div>
+    
+        <div id="iframe-container" style="display: none;">
+          <iframe id="stream-frame" src=""></iframe>
+      </div>
+    </div>
+</body>
+</html>

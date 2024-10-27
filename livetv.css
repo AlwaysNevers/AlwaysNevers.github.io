@@ -1,0 +1,189 @@
+.container {
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+button {
+    margin: 20px 0;
+}
+.button {
+  background-color: #521ce7; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Some padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition effect */
+  font-weight: bold;
+}
+.button:hover {
+    background-color: #3f13b9; /* Darker green on hover */
+}
+.streams-list {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding-bottom: 15px;
+    width: 100%; /* Set a fixed width for the container */
+}
+.stream-card {
+  cursor: pointer;
+  min-width: 200px; /* Adjust as needed */
+  max-width: 200px;
+  border-radius: 10px;
+  margin: 10px;
+  overflow: hidden;
+  display: inline-block;
+  transition: transform 0.2s;
+  font-size: small;
+}
+.stream-card:hover {
+    transform: scale(1.05);
+}
+.loading, .no-data {
+    font-size: 1.2em;
+    color: #666;
+    text-align: center;
+    width: 100%;
+}
+iframe {
+    border-radius: 5px;
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+.sports-category {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 15px;
+margin-top: 20px;
+padding: 0 10px;
+}
+
+.sport-button {
+background-color: #d5c6ff;
+border: 2px solid #521ce7;
+border-radius: 8px;
+padding: 12px;
+text-align: center;
+width: 120px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+font-size: 24px;
+font-weight: bold;
+color: #333;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sport-button:hover {
+background-color: #521ce7;
+color: #fff;
+transform: translateY(-3px);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.match-container {
+  display: flex;
+  overflow: hidden; /* Hide scrollbar */
+  position: relative; /* Allow positioning of arrows */
+  padding-bottom: 15px;
+  width: 100%;
+  height: 100; /* Set a fixed height for the container */
+}
+
+.live-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 2px 6px;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 12px;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.start-time-badge {
+position: absolute;
+top: 10px;
+left: 10px;
+background-color: gray;
+color: white;
+padding: 2px 6px;
+border-radius: 12px;
+font-size: 0.9em;
+font-weight: bold;
+z-index: 1;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.upcoming-button {
+background-color: #ccc;
+color: #666;
+cursor: not-allowed;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+font-weight: bold;
+}
+
+.upcoming-button:hover {
+background-color: #adadad;
+}
+
+.stream-card {
+  position: relative; /* To position the "LIVE" badge within the card */
+  cursor: pointer;
+  min-width: 200px;
+  max-width: 200px;
+  border-radius: 10px;
+  margin: 10px;
+  overflow: hidden;
+  display: inline-block;
+  transition: transform 0.2s;
+  font-size: small;
+}
+
+.popular-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Positions items at both ends */
+    margin-bottom: -1%;
+}
+
+.popular-header h2 {
+    font-size: 26px;
+    margin-left: 0.8%;
+}
+
+.scroll-arrows { /* Container for arrows */
+    display: flex;
+    gap: 3px; /* Space between the two arrows */
+}
+
+.scroll-arrow {
+    background-color: transparent;
+    border: 2px solid #521ce7;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight:10;
+    cursor: pointer;
+    width: 35px; 
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 0;
+}
+
+.scroll-arrow:hover {
+    background-color: #521ce7;
+    transition: 0.2s;
+}
